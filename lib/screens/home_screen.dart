@@ -12,11 +12,30 @@ class HomeScreen extends StatelessWidget {
       drawer: const AppDrawer(),
       appBar: AppBar(
         title: const Text('Inicio - Rutas del Norte de Quito'),
-        backgroundColor: const Color.fromARGB(255, 69, 181, 63), // 🔒 NO modificar
+        backgroundColor: const Color.fromARGB(255, 69, 181, 63), // no modificar
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          
+          Row(
+            children: const [
+              Icon(Icons.directions_bus, color: Colors.indigo, size: 30),
+              SizedBox(width: 10),
+              Text(
+                'Bienvenidos a MiRuta Inteligente',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Text(
+            'En esta pantalla podrás explorar información detallada de los principales buses que transitan por la zona norte de Quito. Revisa rutas, horarios y puntos seguros antes de viajar.',
+            style: TextStyle(fontSize: 16, color: isDarkMode ? Colors.white70 : Colors.black87),
+          ),
+          const SizedBox(height: 24),
+
+          // 🚌 Tarjetas de buses
           _buildBusCard(
             context,
             isDarkMode,
@@ -82,6 +101,20 @@ class HomeScreen extends StatelessWidget {
             lugaresSeguros: 'Cotocollao, Iñaquito',
             salida: 'San Antonio',
             llegada: 'Iñaquito',
+          ),
+
+          const SizedBox(height: 32),
+          // 🔜 Próximamente
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Icon(Icons.schedule, color: Colors.grey),
+              SizedBox(width: 8),
+              Text(
+                '¡Más rutas serán añadidas próximamente!',
+                style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
+              ),
+            ],
           ),
         ],
       ),
